@@ -1,4 +1,39 @@
 <template>
+  <div class="column items-center">
+    <q-table
+      :data="tableData"
+      :columns="tableColumns"
+      :loading="loadingData"
+      :row-key="rowKey"
+      flat
+      class="full-width">
+      <template v-slot:body="props">
+        <q-tr :props="props">
+          <q-td
+            v-for="col in tableColumns"
+            :key="col.field"
+            :props="props">
+            <div>
+              <div v-if="col.type === 'button'">
+                <q-btn
+                  flat
+                  square
+                  no-caps
+                  :color="props.row.color ? props.row.color : col.buttonColor"
+                  :label="col.buttonLabel"
+                  @click.native="handleButton(col.field, props.row)" />
+              </div>
+              <div
+                v-else
+                :class="props.row.color ? 'text-' + props.row.color : ''">
+                {{props.row[col.field]}}
+              </div>
+            </div>
+          </q-td>
+        </q-tr>
+      </template>
+    </q-table>
+  </div>
 </template>
 <script>
 /*!
@@ -8,7 +43,37 @@
 
 export default {
   name: 'BrQTable',
-  props: {}
+  props: {
+    loadingData: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    tableColumns: {
+      type: Array,
+      required: true
+    },
+    tableData: {
+      type: Array,
+      required: true
+    },
+    rowKey: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    handleButton(field, row) {
+      const data = {
+        field,
+        row
+      }
+      this.$emit('handleButton', data);
+    }
+  }
 };
 </script>
 <style lang="scss">
