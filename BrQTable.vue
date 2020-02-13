@@ -5,7 +5,8 @@
       :columns="tableColumns"
       :loading="loadingData"
       :row-key="rowKey"
-      flat
+      :flat="!$q.screen.xs"
+      :grid="$q.screen.xs"
       class="full-width">
       <template v-slot:body="props">
         <q-tr :props="props">
@@ -31,6 +32,37 @@
             </div>
           </q-td>
         </q-tr>
+      </template>
+      <!-- Mobile Support Prop -->
+      <template v-slot:item="props">
+        <div
+          class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <q-card>
+            <q-list class="q-py-sm">
+              <q-item v-for="col in props.cols" :key="col.name">
+                <q-item-section class="text-center">
+                  <q-item-label caption>{{ col.label }}</q-item-label>
+                  <div v-if="col.type === 'button'">
+                    <q-btn
+                      flat
+                      square
+                      no-caps
+                      :color="props.row.color ? props.row.color :
+                              col.buttonColor"
+                      :label="col.buttonLabel"
+                      @click.native="handleButton(col.field, props.row)" />
+                  </div>
+                  <q-item-label
+                    v-else
+                    :class="props.row.color ? 'text-' + props.row.color : ''"
+                    style="font-size: 13px">
+                    {{ col.value }}
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-card>
+        </div>
       </template>
     </q-table>
   </div>
