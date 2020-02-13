@@ -36,8 +36,8 @@
       <!-- Mobile Support Prop -->
       <template v-slot:item="props">
         <div
-          class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <q-card>
+          class="q-pt-xs q-px-sm q-pb-sm col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <q-card bordered flat>
             <q-list class="q-py-sm">
               <q-item v-for="col in props.cols" :key="col.name">
                 <q-item-section class="text-center">
