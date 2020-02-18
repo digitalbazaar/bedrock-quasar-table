@@ -17,16 +17,25 @@
             <div>
               <div v-if="col.type === 'button'">
                 <q-btn
-                  flat
+                  outline
                   square
                   no-caps
-                  :color="props.row.color ? props.row.color : col.buttonColor"
+                  :color="props.row.rowColor ?
+                    props.row.rowColor : col.buttonColor"
                   :label="col.buttonLabel"
                   @click.native="handleButton(col.field, props.row)" />
               </div>
+              <div v-else-if="col.type === 'chip'">
+                <q-chip
+                  square
+                  text-color="white"
+                  class="q-ma-none q-pa-none"
+                  style="min-width: 75px; height: 36px"
+                  :style="{'background-color': props.row[col.field]}" />
+              </div>
               <div
                 v-else
-                :class="props.row.color ? 'text-' + props.row.color : ''">
+                :class="props.row.rowColor ? 'text-' + props.row.rowColor : ''">
                 {{props.row[col.field]}}
               </div>
             </div>
