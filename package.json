@@ -7,7 +7,7 @@
     "lint": "eslint \"**/*.{js,vue}\""
   },
   "peerDependencies": {
-    "bedrock-quasar": "^3.0.0",
+    "bedrock-quasar": "3.0.0 - 4.x",
     "vue": "^2.6.6"
   },
   "repository": {
