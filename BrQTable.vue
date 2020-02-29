@@ -46,11 +46,15 @@
       <template v-slot:item="props">
         <div
           class="q-pt-xs q-px-sm q-pb-sm col-xs-12 col-md-4 col-lg-3">
-          <q-card bordered flat>
+          <q-card
+            bordered
+            flat>
             <q-list class="q-py-sm">
-              <q-item v-for="col in props.cols" :key="col.name">
+              <q-item
+                v-for="col in props.cols"
+                :key="col.name">
                 <q-item-section class="text-center">
-                  <q-item-label caption>{{ col.label }}</q-item-label>
+                  <q-item-label caption>{{col.label}}</q-item-label>
                   <div v-if="col.type === 'button'">
                     <q-btn
                       outline
@@ -90,8 +94,6 @@
 /*!
  * Copyright (c) 2020 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
 export default {
   name: 'BrQTable',
   props: {
@@ -121,7 +123,7 @@ export default {
       const data = {
         field,
         row
-      }
+      };
       this.$emit('handleButton', data);
     }
   }
