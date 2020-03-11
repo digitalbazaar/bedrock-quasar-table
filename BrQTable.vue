@@ -1,9 +1,9 @@
 <template>
   <div class="column items-center">
     <q-table
-      :data="tableData"
-      :columns="tableColumns"
-      :loading="loadingData"
+      :data="data"
+      :columns="columns"
+      :loading="loading"
       :row-key="rowKey"
       :flat="$q.screen.gt.sm"
       :grid="$q.screen.lt.md"
@@ -45,7 +45,8 @@
       <!-- Mobile Support Prop -->
       <template v-slot:item="props">
         <div
-          class="q-pt-xs q-px-sm q-pb-sm col-xs-12 col-md-4 col-lg-3">
+          class="q-pt-xs q-px-sm q-pb-sm col-xs-12
+            col-md-4 col-lg-3 profile-card">
           <q-card
             bordered
             flat>
@@ -97,16 +98,16 @@
 export default {
   name: 'BrQTable',
   props: {
-    loadingData: {
+    loading: {
       type: Boolean,
       default: false,
       required: false
     },
-    tableColumns: {
+    columns: {
       type: Array,
       required: true
     },
-    tableData: {
+    data: {
       type: Array,
       required: true
     },
@@ -130,4 +131,9 @@ export default {
 };
 </script>
 <style lang="scss">
+
+.profile-card:last-of-type {
+  border-bottom: solid 1px rgba(0,0,0,0.12);
+}
+
 </style>
