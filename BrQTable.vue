@@ -11,7 +11,7 @@
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td
-            v-for="col in tableColumns"
+            v-for="col in columns"
             :key="col.field"
             :props="props">
             <div>
