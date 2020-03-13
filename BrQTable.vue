@@ -45,7 +45,7 @@
       <!-- Mobile Support Prop -->
       <template v-slot:item="props">
         <div
-          class="q-pt-xs q-px-sm q-pb-sm col-xs-12
+          class="q-pt-xs q-px-sm q-pb-sm col-xs-12 col-sm-6
             col-md-4 col-lg-3 profile-card">
           <q-card
             bordered
@@ -132,8 +132,12 @@ export default {
 </script>
 <style lang="scss">
 
-.profile-card:last-of-type {
-  border-bottom: solid 1px rgba(0,0,0,0.12);
+.profile-card:first-child {
+  margin: auto;
+}
+
+.q-table--grid .q-table__bottom {
+  border-top: solid 1px rgba(0,0,0,0.12);
 }
 
 </style>
